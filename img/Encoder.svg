@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 41.256 37.505" enable-background="new 0 0 41.256 37.505" xml:space="preserve">
+<rect x="0" y="7" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" width="41.256" height="30.505"/>
+<g>
+	<g>
+		<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#7D7C7D" points="41.256,7.501 40.506,7.501 40.506,36.755 0.75,36.755 
+			0.75,7.501 0,7.501 0,37.505 41.256,37.505 		"/>
+		<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#7D7C7D" points="22.503,18.753 22.503,19.503 36.755,19.503 
+			36.755,13.502 22.503,13.502 22.503,14.252 36.005,14.252 36.005,18.753 		"/>
+		<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#7D7C7D" points="30.004,29.254 30.004,30.004 36.755,30.004 
+			36.755,24.003 30.004,24.003 30.004,24.753 36.005,24.753 36.005,29.254 		"/>
+	</g>
+	<g>
+		<rect x="4.501" y="24.003" fill-rule="evenodd" clip-rule="evenodd" fill="#6DA392" width="25.503" height="6.001"/>
+		<rect x="4.501" y="13.502" fill-rule="evenodd" clip-rule="evenodd" fill="#6DA392" width="18.002" height="6.001"/>
+	</g>
+	<rect x="0" y="0" fill-rule="evenodd" clip-rule="evenodd" fill="#407EB8" width="41.256" height="7.501"/>
+</g>
+</svg>

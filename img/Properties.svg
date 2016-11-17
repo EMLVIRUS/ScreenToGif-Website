@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 40 45.283" enable-background="new 0 0 40 45.283" xml:space="preserve">
+<g>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M30.944,41.51V10.564l-9.814-9.81H0.754V41.51H30.944z"/>
+	<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#6DA392" points="27.17,38.49 22.236,33.605 18.868,36.981 26.416,45.283 
+		40,29.435 37.228,26.864 	"/>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#7C7B7A" d="M30.944,10.564l-9.812,0.001V0.754L30.944,10.564z M21.132,0H0
+		v42.265h22.642V41.51H0.754V0.754h19.623v10.567h10.566v20.378h0.754V10.564L21.132,0z"/>
+	<rect x="10.566" y="15.095" fill-rule="evenodd" clip-rule="evenodd" fill="#B3B2B3" width="16.604" height="0.755"/>
+	<rect x="10.566" y="21.132" fill-rule="evenodd" clip-rule="evenodd" fill="#B3B2B3" width="16.604" height="0.754"/>
+	<rect x="10.566" y="27.17" fill-rule="evenodd" clip-rule="evenodd" fill="#B3B2B3" width="16.604" height="0.755"/>
+	<rect x="10.566" y="33.208" fill-rule="evenodd" clip-rule="evenodd" fill="#B3B2B3" width="8.302" height="0.755"/>
+	<rect x="23.396" y="33.208" fill-rule="evenodd" clip-rule="evenodd" fill="#B3B2B3" width="3.774" height="0.755"/>
+</g>
+<circle fill-rule="evenodd" clip-rule="evenodd" fill="#B3B2B3" cx="6.874" cy="15.891" r="2.25"/>
+<circle fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#B2B3B3" stroke-width="0.75" stroke-miterlimit="10" cx="6.874" cy="21.892" r="2"/>
+<circle fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#B2B3B3" stroke-width="0.75" stroke-miterlimit="10" cx="6.874" cy="27.894" r="2"/>
+<circle fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#B2B3B3" stroke-width="0.75" stroke-miterlimit="10" cx="6.874" cy="33.893" r="2"/>
+</svg>
