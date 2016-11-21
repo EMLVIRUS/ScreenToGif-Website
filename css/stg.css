@@ -66,6 +66,12 @@ body {
     margin-bottom: 10px;
 }
 
+@media screen and (max-width: 768px){
+    .jumbotron h1 {
+        font-size: 10vw;
+    }
+}
+
 .jumbotron p {
     margin: 25px 0px 35px;
     font-size: 25px;
@@ -309,23 +315,6 @@ footer p {
     color: white;
     background-color: #19619d;
     border-color: #19619d;
-}
-
-.container-callback {
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
-
-.container-callback .panel {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
-}
-
-#callback-code .btn {
-    width: 150px;
-}
-
-#callback-error {
-    display: none;
 }
 
 .container-downloads {
