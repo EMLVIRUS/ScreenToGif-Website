@@ -4,7 +4,7 @@
 "use strict";
 
 var $window = $(window);
-d
+
 function GetLatestReleaseInfo() {
     $.getJSON("https://api.github.com/repos/NickeManarin/ScreenToGif/releases/latest").done(function (release) {
         var asset = release.assets[0];
@@ -14,7 +14,7 @@ function GetLatestReleaseInfo() {
         }
         var oneHour = 60 * 60 * 1000;
         var oneDay = 24 * oneHour;
-d        var dateDiff = new Date() - new Date(asset.updated_at);
+        var dateDiff = new Date() - new Date(asset.updated_at);
         var timeAgo;
         if (dateDiff < oneDay) {
             timeAgo = (dateDiff / oneHour).toFixed(1) + " hours ago";
@@ -24,7 +24,7 @@ d        var dateDiff = new Date() - new Date(asset.updated_at);
         var releaseInfo = "Version: " + release.tag_name + "\nReleased: " + timeAgo + "\nDownload count: " + downloadCount.toLocaleString();
         $(".stg-download").attr("href", asset.browser_download_url);
         $(".stg-download").attr("title", "<a href='downloads/'><div>" + releaseInfo + "</div></a>");
-d
+
         InitTooltip($(".stg-download"));
     });
 }
