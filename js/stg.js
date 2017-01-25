@@ -6,7 +6,7 @@
 var $window = $(window);
 
 function GetLatestReleaseInfo() {
-    $.getJSON("https://api.github.com/repos/NickeManarin/ScreenToGif/releases/latest").done(function (release) {
+    $.getJSON("https://api.github.com/repos/NickeManarin/ScreenToGif/releases/latest").done(function(release) {
         var asset = release.assets[0];
         var downloadCount = 0;
         for (var i = 0; i < release.assets.length; i++) {
@@ -34,18 +34,18 @@ function InitTooltip(obj, fadeDelay = 300) {
         trigger: "manual",
         html: true,
         animation: false
-    }).on("mouseenter", function () {
+    }).on("mouseenter", function() {
         obj.tooltip("show");
-    }).on("mouseleave", function () {
-        setTimeout(function () {
+    }).on("mouseleave", function() {
+        setTimeout(function() {
             if (!obj.is(":hover") && !$(".tooltip").is(":hover")) {
                 obj.tooltip("hide");
             }
         }, fadeDelay);
     });
 
-    obj.parent().on("mouseleave", ".tooltip", function () {
-        setTimeout(function () {
+    obj.parent().on("mouseleave", ".tooltip", function() {
+        setTimeout(function() {
             if (!obj.is(":hover") && !$(".tooltip").is(":hover")) {
                 obj.tooltip("hide");
             }
@@ -58,8 +58,10 @@ function InitTooltip(obj, fadeDelay = 300) {
     }
 }
 
-$(document).ready(function () {
-    $(".stg-scredenshots2").fancybox({
+$(document).ready(function() {
+    GetFirstBrowserLanguage();
+
+    $(".stg-screenshots2").fancybox({
         padding: 5,
         margin: 0,
         autoSize: false,
@@ -104,29 +106,59 @@ $(document).ready(function () {
     GetLatestReleaseInfo();
 });
 
- var getFirstBrowserLanguage = function () {
+var GetFirstBrowserLanguage = function() {
     var nav = window.navigator,
-    browserLanguagePropertyKeys = ['language', 'browserLanguage', 'systemLanguage', 'userLanguage'],
-    i,
-    language;
+        browserLanguagePropertyKeys = ['language', 'browserLanguage', 'systemLanguage', 'userLanguage'],
+        i,
+        language;
 
     //Support for HTML 5.1 "navigator.languages".
     if (Array.isArray(nav.languages)) {
-      for (i = 0; i < nav.languages.length; i++) {
-        language = nav.languages[i];
-        if (language && language.length) {
-          return language;
+        for (i = 0; i < nav.languages.length; i++) {
+            language = nav.languages[i];
+            if (language && language.length) {
+                return language;
+            }
         }
-      }
     }
 
     //Support for other well known properties in browsers.
     for (i = 0; i < browserLanguagePropertyKeys.length; i++) {
-      language = nav[browserLanguagePropertyKeys[i]];
-      if (language && language.length) {
-        return language;
-      }
+        language = nav[browserLanguagePropertyKeys[i]];
+        if (language && language.length) {
+            return language;
+        }
     }
 
     return null;
-  };
+};
+
+function Language(lang) {
+    if (lang.length > 2)
+        lang = lang.substring(0, 2);
+
+    var pt = {
+        TxTitle: "ScreenToGif - Grave sua tela, edite e salve como Gif ou vídeo",
+        Footer: "LALALALAoi"
+    };
+
+    var __construct = function() {
+        if (eval('typeof ' + lang) == 'undefined') {
+            lang = "en";
+        }
+        return;
+    }()
+
+    this.getStr = function(str, defaultStr) {
+        var retStr = eval('eval(lang).' + str);
+        if (typeof retStr != 'undefined') {
+            return retStr;
+        } else {
+            if (typeof defaultStr != 'undefined') {
+                return defaultStr;
+            } else {
+                return eval('en.' + str);
+            }
+        }
+    }
+}
