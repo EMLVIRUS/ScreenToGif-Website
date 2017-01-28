@@ -3,22 +3,33 @@
 
 "use strict";
 
-function Translate(document, index) {
+function Translate(d, index) {
     var l = GetFirstBrowserLanguage();
 
-    if (l == "en")
+    if (l == "en" || l != "pt")
         return;
+
+    if (l.length > 2)
+        l = l.substring(0, 2);
 
     var t = new Language(l);
 
     switch (index) {   
         case 0: //Main
-            document.title = t.Str("Title");
-            document.getElementById("Description").innerHTML = t.Str("Description");
-            document.getElementById("Download").innerHTML = t.Str("Download");
-            document.getElementById("Help").innerHTML = t.Str("Help");
-            document.getElementById("Source").innerHTML = t.Str("Source");
-            document.getElementById("Donate").innerHTML = t.Str("Donate");
+            //d.title = t.Str("Title", d);
+            d.getElementById("Description").innerHTML = t.Str("Description", d);
+
+            d.getElementById("Downloads").innerHTML = t.Str("Downloads", d);
+            d.getElementById("Screenshot").innerHTML = t.Str("Screenshot", d);
+            d.getElementById("Changelog").innerHTML = t.Str("Changelog", d);
+            d.getElementById("Chat").innerHTML = t.Str("Chat", d);
+
+            d.getElementById("Download").innerHTML = t.Str("Download", d);
+            d.getElementById("Help").innerHTML = t.Str("Help", d);
+            d.getElementById("Source").innerHTML = t.Str("Source", d);
+            d.getElementById("Donate").innerHTML = t.Str("Donate", d);
+            d.getElementById("More").innerHTML = t.Str("More", d);
+            d.getElementById("Features").innerHTML = t.Str("Features", d);
 
             //document.getElementById("txFooter").innerHTML = t.Str("Footer");
             break;   
@@ -58,9 +69,6 @@ var GetFirstBrowserLanguage = function() {
 };
 
 function Language(lang) {
-    if (lang.length > 2)
-        lang = lang.substring(0, 2);
-
     var pt = {
         Description: "Gravador de tela, webcam e quadro virtual com um editor integrado.",
         Title: "ScreenToGif - Grave sua tela, edite e salve como Gif ou vídeo",
@@ -68,6 +76,8 @@ function Language(lang) {
         Help: "Manual do Usuário",
         Source: "Código Fonte",
         Donate: "Doações",
+        More: "Mais Imagens",
+        Features: "Recursos",
     };
 
     var __construct = function() {
@@ -77,7 +87,7 @@ function Language(lang) {
         return;
     }()
 
-    this.Str = function(str, defaultStr) {
+    this.Str = function(str, d, defaultStr) {
         var retStr = eval('eval(lang).' + str);
         if (typeof retStr != 'undefined') {
             return retStr;
@@ -85,7 +95,7 @@ function Language(lang) {
             if (typeof defaultStr != 'undefined') {
                 return defaultStr;
             } else {
-                return eval('en.' + str);
+                return d.getElementById(str).innerHTML; // eval('en.' + str);
             }
         }
     }

@@ -59,8 +59,6 @@ function InitTooltip(obj, fadeDelay = 300) {
 }
 
 $(document).ready(function() {
-    GetFirstBrowserLanguage();
-
     $(".stg-screenshots2").fancybox({
         padding: 5,
         margin: 0,
