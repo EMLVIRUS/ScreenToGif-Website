@@ -278,7 +278,7 @@ footer p {
 
 .expandbody {
     display: flex;
-    flex-direction: column;
+     flex-direction: column;
     min-height: 100vh;
 }
 
@@ -308,13 +308,13 @@ footer p {
 .patrons-panel {
     margin-top: 30px;
     margin-bottom: 10px;
-    border-color: #19619d;
+    border-color: #334b64; /*#19619d*/
 }
 
 .patrons-panel .panel-heading {
     color: white;
-    background-color: #19619d;
-    border-color: #19619d;
+    background-color: #334b64;
+    border-color: #334b64;
 }
 
 .container-downloads {
