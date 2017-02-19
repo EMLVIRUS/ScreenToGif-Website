@@ -6,7 +6,7 @@
 var $window = $(window);
 
 function GetLatestReleaseInfo() {
-    $.getJSON("https://api.github.com/repos/NickeManarin/ScreenToGif/releases/latest").done(function (release) {
+    $.getJSON("https://api.github.com/repos/NickeManarin/ScreenToGif/releases/latest").done(function(release) {
         var asset = release.assets[0];
         var downloadCount = 0;
         for (var i = 0; i < release.assets.length; i++) {
@@ -34,18 +34,18 @@ function InitTooltip(obj, fadeDelay = 300) {
         trigger: "manual",
         html: true,
         animation: false
-    }).on("mouseenter", function () {
+    }).on("mouseenter", function() {
         obj.tooltip("show");
-    }).on("mouseleave", function () {
-        setTimeout(function () {
+    }).on("mouseleave", function() {
+        setTimeout(function() {
             if (!obj.is(":hover") && !$(".tooltip").is(":hover")) {
                 obj.tooltip("hide");
             }
         }, fadeDelay);
     });
 
-    obj.parent().on("mouseleave", ".tooltip", function () {
-        setTimeout(function () {
+    obj.parent().on("mouseleave", ".tooltip", function() {
+        setTimeout(function() {
             if (!obj.is(":hover") && !$(".tooltip").is(":hover")) {
                 obj.tooltip("hide");
             }
@@ -53,12 +53,13 @@ function InitTooltip(obj, fadeDelay = 300) {
     });
 
     if (obj.is(":hover")) {
+
         obj.tooltip("show");
     }
 }
 
-$(document).ready(function () {
-    $(".stg-screenshots").fancybox({
+$(document).ready(function() {
+    $(".stg-screenshots2").fancybox({
         padding: 5,
         margin: 0,
         autoSize: false,
