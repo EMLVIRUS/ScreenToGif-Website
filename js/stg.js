@@ -7,26 +7,38 @@ var $window = $(window);
 
 function GetLatestReleaseInfo() {
     $.getJSON("https://api.github.com/repos/NickeManarin/ScreenToGif/releases/latest").done(function(release) {
-        var asset = release.assets[0];
-        var downloadCount = 0;
-        for (var i = 0; i < release.assets.length; i++) {
-            downloadCount += release.assets[i].download_count;
-        }
-        var oneHour = 60 * 60 * 1000;
-        var oneDay = 24 * oneHour;
-        var dateDiff = new Date() - new Date(asset.updated_at);
-        var timeAgo;
-        if (dateDiff < oneDay) {
-            timeAgo = (dateDiff / oneHour).toFixed(1) + " hours ago";
-        } else {
-            timeAgo = (dateDiff / oneDay).toFixed(1) + " days ago";
-        }
-        var releaseInfo = "Version: " + release.tag_name + "\nReleased: " + timeAgo + "\nDownload count: " + downloadCount.toLocaleString();
-        $(".stg-download").attr("href", asset.browser_download_url);
-        $(".stg-download").attr("title", "<a href='downloads/'><div>" + releaseInfo + "</div></a>");
+        InitDownloadButton(release, ".stg-download", 0);
 
-        InitTooltip($(".stg-download"));
+        // if (release.assets[1] != undefined) {
+        //     $(".stg-download-portable").show();
+
+        //     InitDownloadButton(release, ".stg-download-portable", 1);
+        // } else {
+        //     $(".stg-download-portable").hide();
+        // }
     });
+}
+
+function InitDownloadButton(release, className, index) {
+    var asset = release.assets[index];
+    var downloadCount = 0;
+    for (var i = 0; i < release.assets.length; i++) {
+        downloadCount += release.assets[i].download_count;
+    }
+    var oneHour = 60 * 60 * 1000;
+    var oneDay = 24 * oneHour;
+    var dateDiff = new Date() - new Date(asset.updated_at);
+    var timeAgo;
+    if (dateDiff < oneDay) {
+        timeAgo = (dateDiff / oneHour).toFixed(1) + " hours ago";
+    } else {
+        timeAgo = (dateDiff / oneDay).toFixed(1) + " days ago";
+    }
+    var releaseInfo = "Version: " + release.tag_name + "\nReleased: " + timeAgo + "\nDownload count: " + downloadCount.toLocaleString();
+    $(className).attr("href", asset.browser_download_url);
+    $(className).attr("title", "<a href='downloads/'><div>" + releaseInfo + "</div></a>");
+
+    InitTooltip($(className));
 }
 
 function InitTooltip(obj, fadeDelay = 300) {
