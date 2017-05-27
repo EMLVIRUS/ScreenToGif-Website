@@ -6,7 +6,7 @@
 function Translate(d, index) {
     var l = GetFirstBrowserLanguage();
 
-    if (l == "en" || l != "pt")
+    if (l == "en") // || l != "pt")
         return;
 
     if (l.length > 2)
@@ -14,30 +14,64 @@ function Translate(d, index) {
 
     var t = new Language(l);
 
+    d.title = t.Str("Title");
+
+    t.Trnslt(d, "Home");
+    t.Trnslt(d, "Downloads");
+    t.Trnslt(d, "Screenshot");
+    t.Trnslt(d, "Donate");
+    t.Trnslt(d, "Changelog");
+    t.Trnslt(d, "Chat");
+    t.Trnslt(d, "Copyright", " © 2013-2017 Nicke Manarin");
+
     switch (index) {   
         case 0: //Main
-            //d.title = t.Str("Title", d);
-            d.getElementById("Description").innerHTML = t.Str("Description", d);
+            t.Trnslt(d, "Description");
 
-            d.getElementById("Downloads").innerHTML = t.Str("Downloads", d);
-            d.getElementById("Screenshot").innerHTML = t.Str("Screenshot", d);
-            d.getElementById("Changelog").innerHTML = t.Str("Changelog", d);
-            d.getElementById("Chat").innerHTML = t.Str("Chat", d);
+            t.Trnslt(d, "Download");
+            t.Trnslt(d, "Help");
+            t.Trnslt(d, "Source");
+            t.Trnslt(d, "Donate2");
+            t.Trnslt(d, "More");
 
-            d.getElementById("Download").innerHTML = t.Str("Download", d);
-            d.getElementById("Help").innerHTML = t.Str("Help", d);
-            d.getElementById("Source").innerHTML = t.Str("Source", d);
-            d.getElementById("Donate").innerHTML = t.Str("Donate", d);
-            d.getElementById("More").innerHTML = t.Str("More", d);
-            d.getElementById("Features").innerHTML = t.Str("Features", d);
-
-            //document.getElementById("txFooter").innerHTML = t.Str("Footer");
+            t.Trnslt(d, "Features");
+            t.Trnslt(d, "Portable");
+            t.Trnslt(d, "Free");
+            t.Trnslt(d, "Recorders");
+            t.Trnslt(d, "Powerful");
+            t.Trnslt(d, "Export");
+            t.Trnslt(d, "Clean");
+            t.Trnslt(d, "Languages");
+            t.Trnslt(d, "Options");
+            t.Trnslt(d, "Active");
+            t.Trnslt(d, "Requirements");
+            t.Trnslt(d, "Windows");
+            t.Trnslt(d, "Framework");
             break;   
         case 1: //Downloads
+            t.Trnslt(d, "Requirements");
+            t.Trnslt(d, "Windows");
+            t.Trnslt(d, "Framework");
 
+            t.Trnslt(d, "Releases");
+            t.Trnslt(d, "Release");
+            t.Trnslt(d, "Size");
+            t.Trnslt(d, "Count");
+            t.Trnslt(d, "Date");
+            t.Trnslt(d, "Days");
             break;
         case 2: //Donate
-
+            t.Trnslt(d, "Support");
+            t.Trnslt(d, "Info1");
+            t.Trnslt(d, "Info2");
+            t.Trnslt(d, "Info3");
+            t.Trnslt(d, "Support");
+            t.Trnslt(d, "Links");
+            t.Trnslt(d, "Donators");
+            t.Trnslt(d, "Donator");
+            t.Trnslt(d, "Website");
+            t.Trnslt(d, "Amount");
+            t.Trnslt(d, "From");
             break;
     }
 }
@@ -70,14 +104,49 @@ var GetFirstBrowserLanguage = function() {
 
 function Language(lang) {
     var pt = {
+        Home: "Início",
+        Downloads: "Downloads",
+        Screenshots: "Imagens",
+        Changelog: "Detalhes da Versão",
+        Chat: "Converse no Gitter",
         Description: "Gravador de tela, webcam e quadro virtual com um editor integrado.",
         Title: "ScreenToGif - Grave sua tela, edite e salve como Gif ou vídeo",
         Download: "Download",
         Help: "Manual do Usuário",
         Source: "Código Fonte",
         Donate: "Doações",
+        Donate2: "Doações",
         More: "Mais Imagens",
         Features: "Recursos",
+        Portable: "Um aplicativo portátil, com apenas um pequeno executável de ~600KB! (comprimido em um Zip).",
+        Free: "Aplicação de graça e com código aberto, sem propagandas!",
+        Recorders: "3 maneiras de gravar seu conteúdo: Tela, Webcam e Quadro de desenho.",
+        Powerful: "Um editor poderoso com muitas opções! Você pode editar sua gravação ou até gifs de outras fontes.",
+        Export: "Você pode exportar como Gif, Vídeo ou salvar como um projeto para editar depois.",
+        Clean: "Uma interface limpa e consistente, feita com C# e WPF.",
+        Languages: "Mais de 18 diferentes idiomas, inclusive Português (Brasil e Portugal). Detecta automaticamente o idioma do seu sistema.",
+        Options: "Várias opções. Você pode até mudar a cor do sistema. :)",
+        Active: "Desenvoilvimento ativo, integrado com as necessidades dos usuários. Comentários são muito bem vindos!",
+        Requirements: "Requerimentos",
+        Windows: "Windows Vista ou mais recente",
+        Framework: ".Net Framework 4.6.1 ou mais recente",
+        Copyright: "Direitos reservados",
+        Releases: "Últimas versões",
+        Release: "Nome da versão",
+        Size: "Tamanho do arquivo",
+        Count: "Quantidade de downloads",
+        Date: "Data de lançamento",
+        Days: "Dias ativos",
+        Support: "Nos ajude",
+        Links: "Atalhos",
+        Info1: "É um aplicativo de graça e com código aberto. Sem propagandas, nada obscuro ou escondido. Se você tem alguma dúvida, sinta-se livre em me questionar ou olhar o código fonte.",
+        Info2: "Doações são a única forma de lucro do ScreenToGif. Se você deseja ajudar o projeto então considere fazer uma doação.",
+        Info3: "É possível doar de 3 maneiras diferentes, via Patreon, Paypal, ou Steam (é possível doar jogos ou créditos).",
+        Donators: "Doadores",
+        Donator: "Nome",
+        Website: "Site",
+        Amount: "Quantia",
+        From: "De"
     };
 
     var __construct = function() {
@@ -98,5 +167,9 @@ function Language(lang) {
                 return d.getElementById(str).innerHTML; // eval('en.' + str);
             }
         }
+    }
+
+    this.Trnslt = function(d, str, extr) {
+        d.getElementById(str).innerHTML = this.Str(str, d) + (extr == undefined ? "" : extr);
     }
 }
