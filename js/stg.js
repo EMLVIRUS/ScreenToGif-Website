@@ -29,7 +29,7 @@ function InitDownloadButton(release, className, index) {
     var oneDay = 24 * oneHour;
     var dateDiff = new Date() - new Date(asset.updated_at);
 
-    var trans = GetTooltipTranslation();
+    //var trans = GetTooltipTranslation();
 
     var timeAgo;
     if (dateDiff < oneDay) {
