@@ -12,10 +12,10 @@ function Translate(d, index) {
     if (l.length > 2)
         l = l.substring(0, 2);
 
-    if (eval('typeof ' + lang) == 'undefined')
-        return;
-
     var t = new Language(l);
+
+    if (eval('typeof ' + l) == 'undefined')
+        return;
 
     d.title = t.Str("Title");
 
