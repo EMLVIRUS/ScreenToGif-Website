@@ -76,6 +76,26 @@ function Translate(d, index) {
     }
 }
 
+function GetTooltipTranslation() {
+    var l = GetFirstBrowserLanguage();
+
+    if (l == "en") // || l != "pt")
+        return;
+
+    if (l.length > 2)
+        l = l.substring(0, 2);
+
+    var t = new Language(l);
+
+    return {
+        "Version": t.Str("VersionTitle"),
+        "Released": t.Str("Released"),
+        "DaysAgo": t.Str("DaysAgo"),
+        "HoursAgo": t.Str("HoursAgo"),
+        "DownloadCount": t.Str("DownloadCount")
+    }
+}
+
 var GetFirstBrowserLanguage = function() {
     var nav = window.navigator,
         browserLanguagePropertyKeys = ['language', 'browserLanguage', 'systemLanguage', 'userLanguage'],
@@ -146,7 +166,12 @@ function Language(lang) {
         Donator: "Nome",
         Website: "Site",
         Amount: "Quantia",
-        From: "De"
+        From: "De",
+        Version: "Versão: ",
+        Released: "Lançamento: ",
+        DaysAgo: " dias atrás",
+        HoursAgo: " horas atrás",
+        DownloadCount: "Quantidade de downloads: ",
     };
 
     var __construct = function() {
@@ -158,6 +183,7 @@ function Language(lang) {
 
     this.Str = function(str, d, defaultStr) {
         var retStr = eval('eval(lang).' + str);
+
         if (typeof retStr != 'undefined') {
             return retStr;
         } else {
