@@ -27,6 +27,7 @@ function Translate(d, index) {
     t.Trnslt(d, "Screenshot");
     t.Trnslt(d, "Donate");
     t.Trnslt(d, "Changelog");
+    t.Trnslt(d, "Source");
     t.Trnslt(d, "Chat");
     t.Trnslt(d, "Copyright", " © 2013-2017 Nicke Manarin");
 
@@ -36,7 +37,6 @@ function Translate(d, index) {
 
             t.Trnslt(d, "Download");
             t.Trnslt(d, "Help");
-            t.Trnslt(d, "Source");
             t.Trnslt(d, "Donate2");
             t.Trnslt(d, "More");
 
