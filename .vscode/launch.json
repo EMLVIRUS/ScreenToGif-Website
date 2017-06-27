@@ -4,7 +4,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "file:///C:/Users/Nicke/Source/ScreenToGif-Website/donate/index.html",
+            "url": "file:///C:/Users/Nicke/Source/ScreenToGif-Website/index.html",
             "webRoot": "${workspaceRoot}"
         },
         {
