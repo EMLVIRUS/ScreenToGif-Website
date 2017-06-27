@@ -15,6 +15,8 @@ function Translate(d, index) {
     if (l != "pt")
         return;
 
+    setLocation(l);
+    
     var t = new Language(l);
 
     // if (eval('typeof ' + l) == 'undefined')
@@ -127,6 +129,14 @@ var GetFirstBrowserLanguage = function() {
 
     return null;
 };
+
+function setLocation(curLoc) {
+    try {
+        history.replaceState(null, "ScreenToGif", window.location.pathname + curLoc);
+        return false;
+    } catch (e) {}
+    location.hash = '#' + curLoc;
+}
 
 function Language(lang) {
     var pt = {
