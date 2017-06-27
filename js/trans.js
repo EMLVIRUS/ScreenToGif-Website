@@ -15,7 +15,7 @@ function Translate(d, index) {
     if (l != "pt")
         return;
 
-    setLocation(l);
+    //setLocation(l);
     
     var t = new Language(l);
 
