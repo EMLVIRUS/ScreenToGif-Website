@@ -139,6 +139,13 @@ body {
     padding: 7px 12px;
 }
 
+.hidden {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 .container-screenshot {
     background-color: #fafafa;
     background-image: url(../img/Background.png);

@@ -73,7 +73,7 @@
             <h1>
                 <a id="downloads-header" href="/">ScreenToGif</a>
             </h1>
-            <p id="Downloads">Downloads</p>
+            <p id="Downloads2">Downloads</p>
         </div>
     </div>
 
@@ -106,7 +106,8 @@
                 <thead>
                     <tr>
                         <th id="Release">Release name</th>
-                        <th id="Size">File size</th>
+                        <th id="Portable2">Portable</th>
+                        <th id="Installer">Installer</th>
                         <th id="Count">Download count</th>
                         <th id="Date">Release date</th>
                         <th id="Days">Active days</th>
@@ -120,6 +121,7 @@
 
     <footer class="footer">
         <p id="Copyright">Copyright &copy; 2013-2017 Nicke Manarin</p>
+        <p id="Download" class="hidden">Download</p>
     </footer>
 
     <script src="../js/jquery.min.js"></script>
@@ -128,34 +130,59 @@
     <script src="../js/trans.js"></script>
 
     <script>
+        Translate(document, 1);
+
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-87410077-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <script>
         $(document).ready(function() {
             var repo = GetParameterByName("repo");
-            if (repo) {
+            if (repo)
                 $("#downloads-header").text(repo).attr("href", "https://github.com/" + repo);
-            } else {
+            else
                 repo = "NickeManarin/ScreenToGif";
-            }
+
             GetReleases(repo);
         });
 
         function GetReleases(repo) {
             $.getJSON("https://api.github.com/repos/" + repo + "/releases").done(function(json) {
                 previousUpdatedAt = moment();
+                var down = document.getElementById("Download").innerHTML;
 
                 for (var i = 0; i < json.length; i++) {
                     var release = json[i];
-                    if (release.assets.length === 0) {
+
+                    if (release.assets.length === 0)
                         continue;
-                    }
-                    var asset = release.assets[0];
-                    var fileSize = Math.round(asset.size / 1024);
+
+                    var port = release.assets[0];
+                    var inst = release.assets[1];
+
+                    var size1 = Math.round(port.size / 1024);
+                    var size2 = inst != undefined ? Math.round(inst.size / 1024) : 0;
+
                     var downloadCount = 0;
                     for (var i2 = 0; i2 < release.assets.length; i2++) {
                         downloadCount += release.assets[i2].download_count;
                     }
-                    var updatedAt = moment(asset.updated_at);
+                    var updatedAt = moment(port.updated_at);
                     var activeDays = previousUpdatedAt.diff(updatedAt, "days", true);
                     previousUpdatedAt = updatedAt;
+
                     $(".table-downloads tbody")
                         .append($("<tr>")
                             .append($("<td>")
@@ -167,15 +194,21 @@
                             )
                             .append($("<td>")
                                 .append($("<a>")
-                                    .attr("href", asset.browser_download_url)
-                                    .text(fileSize.toLocaleString() + " KB")
+                                    .attr("href", port.browser_download_url)
+                                    .text(down + " (" + size1.toLocaleString() + " KB)")
+                                )
+                            )
+                            .append($("<td>")
+                                .append($("<a style=\"visibility:" + (inst == undefined ? "hidden" : "visible") + "\">")
+                                    .attr("href", inst == undefined ? "" : inst.browser_download_url)
+                                    .text(down + " (" + size2.toLocaleString() + " KB)")
                                 )
                             )
                             .append($("<td>")
                                 .text(downloadCount.toLocaleString())
                             )
                             .append($("<td>")
-                                .text(moment(asset.updated_at).format("YYYY/MM/DD HH:mm"))
+                                .text(moment(port.updated_at).format("YYYY/MM/DD HH:mm"))
                             )
                             .append($("<td>")
                                 .text(activeDays.toFixed(1))
@@ -197,24 +230,6 @@
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
-    </script>
-
-    <script>
-        Translate(document, 1);
-
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-87410077-1', 'auto');
-        ga('send', 'pageview');
     </script>
 </body>
 
